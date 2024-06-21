@@ -59,7 +59,7 @@ Elija su opcion:
                             print("SALIR : -1")
                             try:
                                 opcion2D=input("Ingrese la opcion que desee agregar a su carrito: ")
-                                if opcion2D==-1:
+                                if opcion2D=="-1":
                                     break
                                 sw=0
                                 i=0
@@ -93,6 +93,9 @@ Elija su opcion:
                                             for j in range(len(ListaOpciones)): #se retira el stock de la lista principal
                                                 if ListaOpciones[j][0]==lista2D[i][0]:
                                                     ListaOpciones[j][5]=ListaOpciones[j][5]-cantidad
+                                            print("producto vendido satisfactoriamente")
+                                            os.system("pause")
+                                            os.system("cls")
                                             break
                                         elif confirmacion.lower()=="no" or confirmacion.lower()=="n":
                                             break
@@ -112,7 +115,7 @@ Elija su opcion:
                             print("SALIR : -1")
                             try:
                                 opcion3D=input("Ingrese la opcion que desee agregar a su carrito: ")
-                                if opcion3D==-1:
+                                if opcion3D=="-1":
                                     break
                                 sw=0
                                 i=0
@@ -179,7 +182,7 @@ Elija su opcion:
                             todas_fechas(ventas)
                             os.system("pause")
                         case 4: 
-                            break
+                            continue
                 except ValueError:
                                 print("Valor debe ser un entero")
             case 3: #menu CRUD
@@ -192,8 +195,7 @@ Elija su opcion:
 4- Borrar
 5- Listar
 6- Salir
-Elija su opcion: 
-        """))
+Elija su opcion: """))
                     match opcion:
                         case 1:
                             os.system("cls")
@@ -216,7 +218,7 @@ Elija su opcion:
                             listar(nombre_archivo)
                             os.system("pause")
                         case 6:
-                            break
+                            continue
                 except ValueError:
                     print ("Valor debe ser un entero")
             case 4:

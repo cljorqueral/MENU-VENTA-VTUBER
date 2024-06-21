@@ -1,10 +1,10 @@
 from aperturacierre import *
-def crear(nombre_archivo):   
+def crear(nombre_archivo):
     lista=abrirlista(nombre_archivo) #crea un producto y lo retorna para guardarlo
-    lista.append(crear2(lista))
+    lista.append(crear2(lista)) #agarra la lista existente, le agrega el nuevo dato y la cierra
     cerrarlista(nombre_archivo, lista)
-    return lista
-def crear2(lista):
+    return lista #retorna la misma lista para uso en el programa
+def crear2(lista): #funcion que retorna una lista, es auxiliar de crear()
     sw=0 
     while sw==0:
         sw=1
@@ -33,12 +33,12 @@ def crear2(lista):
         try:
             precio=int(input("Ingrese el precio del producto: "))
             stock=int(input("Ingrese stock del producto: "))
-            if precio<0 or stock<0: print("VALOR DEBE SER MAYOR QUE 0")
+            if precio<0 or stock<0: print("UNO DE LOS VALORES ES MENOR QUE 0, INTENTE NUEVAMENTE")
             else: break 
         except ValueError: print("VALOR DEBE SER UN ENTERO")
     return [id,tipo,producto,unidad,precio,stock]
 
-def buscar(nombre_archivo):
+def buscar(nombre_archivo): #se usa nombre_archivo en la invocacion, pero solo se usa con "productos.txt"
     lista=abrirlista(nombre_archivo) #busca algo en la lista, no retorna nada solo muestra
     id=input("Ingrese el id del producto: ")
     sw=0
@@ -54,7 +54,7 @@ def actualizar(nombre_archivo):
     c=0
     sw=0
     id=input("Ingrese el id del producto: ")
-    for c in range(len(lista)):
+    for c in range(len(lista)): #se busca el id con un contador, para asi tener registro de la posicion del producto a modificar
         if lista[c][0] == id:
             sw=1
             print("ID ENCONTRADO")
@@ -75,14 +75,14 @@ def borrar(nombre_archivo):
     lista=abrirlista(nombre_archivo) #se borra un producto basandose en el id indicado
     opcion=input("INGRESE ID A ELIMINAR: ")
     i=0
-    for i in range(len(lista)):
+    for i in range(len(lista)): #se busca con un for para encontrar el valor i de la posicion y borrar ese mismo valor
         if lista[i][0]==opcion:
-            del lista[i]
+            del lista[i] #se usa del por funcionalidad
             break
     cerrarlista(nombre_archivo, lista)
     return lista
-def listar(nombre_archivo):
+def listar(nombre_archivo): #se usa nombre_archivo pero solo se usa solo en "productos.txt"
     print("ID-TIPO-PRODUCTO-METODO DE VENTA-PRECIO-STOCK")
-    lista=abrirlista(nombre_archivo) #muestra todas las opciones de la lista
+    lista=abrirlista(nombre_archivo) #abre el archivo de la lista y lo muestra por cada item existente
     for i in lista:
         print(i[0],"",i[1],"",i[2],"",i[3],"",i[4],"",i[5])
